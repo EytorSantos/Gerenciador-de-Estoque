@@ -18,4 +18,4 @@ Este sistema foi desenvolvido com foco em [citar a linguagem ou framework, ex: P
 * Ferramentas: [Git, VS Code, etc.]
 
 ## 📅 Entrega da Atividade Assíncrona (26/06/2026)
-Conforme solicitado na atividade assíncrona, a documentação referente à etapa de modelagem/projeto encontra-se disponível no commit realizado em 26/06/2026.
+Conforme solicitado na atividade assíncrona, a documentação referente à etapa de modelagem/projeto encontra-se disponível no commit *ATIVIDADE ASSINCRONA* realizado em 26/06/2026.
