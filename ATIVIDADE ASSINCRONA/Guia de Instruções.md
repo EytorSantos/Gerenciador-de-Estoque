@@ -1,6 +1,6 @@
 # INSTRUÇÕES DE VISUALIZAÇÃO DO PROJETO
 
-Para uma visualização correta do relatório e do diagrama de classes, observe as orientações abaixo:
+Para uma visualização correta do relatório e do diagrama de classes (CASO queira baixa a ATIVIDADE ASSINCRONA), observe as orientações abaixo:
 
 ## 1. ESTRUTURA DOS ARQUIVOS:
    O arquivo 'document.md' (Markdown) está configurado para exibir a imagem 
