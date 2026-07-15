@@ -1,0 +1,41 @@
+.movement-list-card {
+    width: 100%;
+    max-width: 1000px; /* Ajuste conforme necessário */
+    overflow-x: auto; /* Para tabelas responsivas */
+}
+
+.movement-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.movement-table th,
+.movement-table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.movement-table th {
+    background-color: var(--surface-light);
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.movement-table td {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.movement-table tbody tr:hover {
+    background-color: var(--surface-light);
+}
+
+#no-movements-message {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem;
+}

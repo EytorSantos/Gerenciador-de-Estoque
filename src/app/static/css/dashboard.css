@@ -1,0 +1,93 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.dashboard-card {
+    text-align: left;
+}
+
+.dashboard-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.dashboard-card p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.alert-card p {
+    color: var(--danger);
+}
+
+.movement-item {
+    padding: 0.5rem 0;
+}
+
+.movement-item hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 0.5rem 0;
+}
+
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--warning); }
+.text-muted { color: var(--text-secondary); }
+.d-flex { display: flex; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }
+.mb-2 { margin-bottom: 0.5rem; }
+.d-block { display: block; }
+
+.dashboard-section {
+    margin-top: 3rem;
+    width: 100%;
+    text-align: left;
+}
+
+.dashboard-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.dashboard-section .card {
+    padding: 1.5rem;
+}
+
+.dashboard-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-section ul li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.dashboard-section ul li:last-child {
+    border-bottom: none;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 1000;
+}

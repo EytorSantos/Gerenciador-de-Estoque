@@ -1,0 +1,87 @@
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 900px; /* Ajuste conforme necessário */
+}
+
+.action-bar input[type="text"] {
+    flex-grow: 1;
+    margin-right: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-light);
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.medication-list-card {
+    width: 100%;
+    max-width: 900px; /* Ajuste conforme necessário */
+    overflow-x: auto; /* Para tabelas responsivas */
+}
+
+.medication-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.medication-table th,
+.medication-table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.medication-table th {
+    background-color: var(--surface-light);
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.medication-table td {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.medication-table tbody tr:hover {
+    background-color: var(--surface-light);
+}
+
+.medication-table .actions-cell {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.medication-table .actions-cell .btn-icon {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.medication-table .actions-cell .btn-icon:hover {
+    color: var(--accent);
+}
+
+.medication-table .actions-cell .btn-icon.delete {
+    color: var(--danger);
+}
+
+.medication-table .actions-cell .btn-icon.delete:hover {
+    color: var(--red-light);
+}
+
+#no-medications-message {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 2rem;
+}
