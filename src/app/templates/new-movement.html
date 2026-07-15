@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Movimentação | Farmácia Stock</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .form-card { max-width: 800px; margin: 0 auto; }
+        .controlled-fields {
+            display: none;
+            border: 2px dashed var(--warning);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            background-color: #fffbeb;
+        }
+        .two-fa-section {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            background-color: #eff6ff;
+            text-align: center;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 640px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/dashboard.html" class="logo">
+            <i class="fas fa-prescription-bottle-alt"></i> Farmácia Stock
+        </a>
+        <nav class="nav-links">
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/medications.html">Medicamentos</a>
+            <a href="/quick-search.html">Consulta Rápida</a>
+            <a href="/movements.html" class="active">Movimentações</a>
+            <a href="/profile.html">Perfil</a>
+            <a href="#" id="logout-btn" class="btn btn-outline" style="padding: 0.4rem 1rem;">Sair</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="form-card card">
+            <h1 style="margin-bottom: 0.5rem;"><i class="fas fa-exchange-alt" style="color: var(--primary);"></i> Registro de Movimentação</h1>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Atualize o estoque com entradas, saídas ou perdas.</p>
+            
+            <form id="movement-form">
+                <div class="form-grid">
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label for="medication_id">Medicamento</label>
+                        <select id="medication_id" name="medication_id" required>
+                            <option value="">Selecione um medicamento...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="batch_id">Lote Disponível</label>
+                        <select id="batch_id" name="batch_id" required disabled>
+                            <option value="">Selecione o medicamento primeiro...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type">Tipo de Operação</label>
+                        <select id="type" name="type" required>
+                            <option value="entry">Entrada (+)</option>
+                            <option value="exit">Saída (-)</option>
+                            <option value="waste">Perda/Avaria (!)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantidade</label>
+                        <input type="number" id="quantity" name="quantity" min="1" required placeholder="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Motivo / Observação</label>
+                        <input type="text" id="reason" name="reason" required placeholder="Ex: Venda, Reposição, Vencimento">
+                    </div>
+                </div>
+
+                <!-- Seção para Controlados -->
+                <div id="controlled-section" class="controlled-fields">
+                    <h3 class="card-title" style="color: #92400e;"><i class="fas fa-file-medical"></i> Dados da Receita</h3>
+                    <p style="font-size: 0.85rem; color: #92400e; margin-bottom: 1rem;">Obrigatório para medicamentos de controle especial.</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="prescription_number">Número da Receita</label>
+                            <input type="text" id="prescription_number" name="prescription_number" placeholder="000000">
+                        </div>
+                        <div class="form-group">
+                            <label for="doctor_crm">CRM do Médico</label>
+                            <input type="text" id="doctor_crm" name="doctor_crm" placeholder="00000/UF">
+                        </div>
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label for="doctor_name">Nome do Médico</label>
+                            <input type="text" id="doctor_name" name="doctor_name" placeholder="Nome completo do prescritor">
+                        </div>
+                        <div class="form-group">
+                            <label for="buyer_name">Nome do Comprador</label>
+                            <input type="text" id="buyer_name" name="buyer_name" placeholder="Nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="buyer_cpf">CPF do Comprador</label>
+                            <input type="text" id="buyer_cpf" name="buyer_cpf" placeholder="000.000.000-00">
+                        </div>
+                    </div>
+
+                    <div id="2fa-section" class="two-fa-section">
+                        <label for="pharmacist_otp" style="font-weight: 700; color: var(--primary); display: block; margin-bottom: 0.5rem;">
+                            <i class="fas fa-key"></i> Autorização do Farmacêutico (OTP)
+                        </label>
+                        <input type="text" id="pharmacist_otp" name="pharmacist_otp" maxlength="6" style="text-align: center; font-size: 1.5rem; max-width: 200px;" placeholder="000000">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+                    <button type="submit" class="btn btn-primary" style="flex-grow: 1; justify-content: center;">
+                        <i class="fas fa-check"></i> Confirmar Movimentação
+                    </button>
+                    <a href="/movements.html" class="btn btn-outline">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">Processando...</div>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/new-movement.js"></script>
+</body>
+</html>

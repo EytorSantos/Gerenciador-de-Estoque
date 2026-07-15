@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Farmácia Stock</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .bg-blue { background: #eff6ff; color: #2563eb; }
+        .bg-green { background: #ecfdf5; color: #10b981; }
+        .bg-yellow { background: #fffbeb; color: #f59e0b; }
+        .bg-red { background: #fef2f2; color: #ef4444; }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 1024px) {
+            .section-grid { grid-template-columns: 1fr; }
+        }
+        
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .list-item:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/dashboard.html" class="logo">
+            <i class="fas fa-prescription-bottle-alt"></i> Farmácia Stock
+        </a>
+        <nav class="nav-links">
+            <a href="/dashboard.html" class="active">Dashboard</a>
+            <a href="/medications.html">Medicamentos</a>
+            <a href="/quick-search.html">Consulta Rápida</a>
+            <a href="/movements.html">Movimentações</a>
+            <a href="/profile.html">Perfil</a>
+            <a href="#" id="logout-btn" class="btn btn-outline" style="padding: 0.4rem 1rem;">Sair</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h1>Bem-vindo, Farmacêutico</h1>
+                <p style="color: var(--text-muted);">Visão geral do estoque e alertas importantes.</p>
+            </div>
+            <a href="/new-movement.html" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nova Movimentação
+            </a>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card stat-card">
+                <div class="stat-icon bg-blue"><i class="fas fa-pills"></i></div>
+                <div class="stat-value" id="total-medications">0</div>
+                <div class="stat-label">Medicamentos</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-icon bg-green"><i class="fas fa-boxes"></i></div>
+                <div class="stat-value" id="total-batches">0</div>
+                <div class="stat-label">Lotes Ativos</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-icon bg-yellow"><i class="fas fa-file-prescription"></i></div>
+                <div class="stat-value" id="controlled-medications">0</div>
+                <div class="stat-label">Controlados</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-icon bg-red"><i class="fas fa-exclamation-triangle"></i></div>
+                <div class="stat-value" id="low-stock-count">0</div>
+                <div class="stat-label">Estoque Baixo</div>
+            </div>
+        </div>
+
+        <div class="section-grid">
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-history"></i> Movimentações Recentes</h3>
+                <div id="recent-movements-list">
+                    <!-- Preenchido via JS -->
+                </div>
+            </div>
+            <div class="card">
+                <h3 class="card-title" style="color: var(--danger);"><i class="fas fa-hourglass-end"></i> Vencimento Próximo</h3>
+                <div id="expiring-medications-list">
+                    <!-- Preenchido via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">Carregando...</div>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

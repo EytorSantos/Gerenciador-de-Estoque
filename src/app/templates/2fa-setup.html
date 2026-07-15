@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar 2FA - Sistema de Gestão de Estoque para Farmácias</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/forms.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Farmácia Stock</div>
+        <nav class="nav-links">
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/medications.html">Medicamentos</a>
+            <a href="/quick-search.html">Consulta Rápida</a>
+            <a href="/movements.html">Movimentações</a>
+            <a href="/profile.html">Perfil</a>
+            <a href="#" id="logout-btn">Sair</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <h1>Configurar Autenticação de Dois Fatores (2FA)</h1>
+            <div class="card form-card">
+                <div id="2fa-generate-section">
+                    <p>Clique no botão abaixo para gerar um novo segredo 2FA. Você precisará escanear o QR Code com um aplicativo autenticador (ex: Google Authenticator).</p>
+                    <button id="generate-2fa-secret-btn" class="btn btn-primary">Gerar Segredo 2FA</button>
+                    <div id="qrcode-display" style="text-align: center; margin-top: 1.5rem; display: none;">
+                        <p>Escaneie o QR Code abaixo com seu aplicativo autenticador:</p>
+                        <img id="qrcode-img" src="" alt="QR Code 2FA" style="width: 200px; height: 200px; margin: 1rem auto;">
+                        <p>Ou insira o código manualmente: <strong id="2fa-secret-text"></strong></p>
+                    </div>
+                </div>
+
+                <div id="2fa-verify-section" style="margin-top: 2rem; display: none;">
+                    <h2>Verificar e Ativar 2FA</h2>
+                    <p>Insira o código de 6 dígitos do seu aplicativo autenticador para ativar o 2FA.</p>
+                    <form id="enable-2fa-form">
+                        <div class="form-group">
+                            <label for="otp-code">Código OTP</label>
+                            <input type="text" id="otp-code" name="otp-code" maxlength="6" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ativar 2FA</button>
+                    </form>
+                </div>
+
+                <div id="2fa-disable-section" style="margin-top: 2rem; display: none;">
+                    <h2>Desativar 2FA</h2>
+                    <p>Insira o código de 6 dígitos do seu aplicativo autenticador para desativar o 2FA.</p>
+                    <form id="disable-2fa-form">
+                        <div class="form-group">
+                            <label for="disable-otp-code">Código OTP</label>
+                            <input type="text" id="disable-otp-code" name="disable-otp-code" maxlength="6" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Desativar 2FA</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">Carregando...</div>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/2fa-setup.js"></script>
+</body>
+</html>

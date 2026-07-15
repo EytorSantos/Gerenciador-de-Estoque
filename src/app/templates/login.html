@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Farmácia Stock</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 2.5rem;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .login-header .logo {
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .login-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card login-card">
+        <div class="login-header">
+            <a href="/" class="logo">
+                <i class="fas fa-prescription-bottle-alt"></i> Farmácia Stock
+            </a>
+            <p>Entre com suas credenciais para acessar o painel</p>
+        </div>
+        
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <div style="position: relative;">
+                    <i class="fas fa-user" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="text" id="username" name="username" placeholder="Seu usuário" style="padding-left: 36px;" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div style="position: relative;">
+                    <i class="fas fa-lock" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="password" id="password" name="password" placeholder="Sua senha" style="padding-left: 36px;" required>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                Entrar no Sistema
+            </button>
+        </form>
+
+        <div id="otp-section" style="display: none;">
+            <div class="divider"></div>
+            <div class="login-header">
+                <h3><i class="fas fa-shield-alt"></i> Verificação 2FA</h3>
+                <p>Insira o código gerado no seu aplicativo</p>
+            </div>
+            <form id="2fa-form">
+                <input type="hidden" id="username-2fa">
+                <input type="hidden" id="password-2fa">
+                <div class="form-group">
+                    <label for="otp">Código OTP</label>
+                    <input type="text" id="otp" name="otp" placeholder="000000" style="text-align: center; font-size: 1.5rem; letter-spacing: 0.5rem;" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    Verificar e Entrar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">Processando...</div>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/login.js"></script>
+</body>
+</html>

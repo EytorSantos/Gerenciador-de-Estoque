@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Rápida | Farmácia Stock</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .search-box {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+        .search-input-large {
+            font-size: 1.25rem;
+            padding: 1rem 1.5rem 1rem 3.5rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+        }
+        .search-wrapper {
+            position: relative;
+        }
+        .search-wrapper i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/dashboard.html" class="logo">
+            <i class="fas fa-prescription-bottle-alt"></i> Farmácia Stock
+        </a>
+        <nav class="nav-links">
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/medications.html">Medicamentos</a>
+            <a href="/quick-search.html" class="active">Consulta Rápida</a>
+            <a href="/movements.html">Movimentações</a>
+            <a href="/profile.html">Perfil</a>
+            <a href="#" id="logout-btn" class="btn btn-outline" style="padding: 0.4rem 1rem;">Sair</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="search-box">
+            <h1>Consulta Rápida</h1>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Encontre medicamentos e verifique saldos instantaneamente.</p>
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="quick-search-input" class="search-input-large" placeholder="Digite o nome, princípio ou código de barras...">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome / Princípio</th>
+                        <th>Dosagem</th>
+                        <th>Tarja</th>
+                        <th>Preço</th>
+                        <th>Saldo Total</th>
+                    </tr>
+                </thead>
+                <tbody id="quick-search-results-body">
+                    <!-- Preenchido via JS -->
+                </tbody>
+            </table>
+            <div id="no-results-message" style="display: none; padding: 3rem; text-align: center; color: var(--text-muted);">
+                <i class="fas fa-comment-slash" style="font-size: 2.5rem; margin-bottom: 1rem; display: block; opacity: 0.5;"></i>
+                Digite algo para iniciar a busca ou tente outros termos.
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">Carregando...</div>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/quick-search.js"></script>
+</body>
+</html>

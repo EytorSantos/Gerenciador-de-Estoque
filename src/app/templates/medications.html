@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicamentos | Farmácia Stock</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+        .search-input-wrapper {
+            position: relative;
+            flex-grow: 1;
+        }
+        .search-input-wrapper i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+        .search-input-wrapper input {
+            padding-left: 36px;
+        }
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/dashboard.html" class="logo">
+            <i class="fas fa-prescription-bottle-alt"></i> Farmácia Stock
+        </a>
+        <nav class="nav-links">
+            <a href="/dashboard.html">Dashboard</a>
+            <a href="/medications.html" class="active">Medicamentos</a>
+            <a href="/quick-search.html">Consulta Rápida</a>
+            <a href="/movements.html">Movimentações</a>
+            <a href="/profile.html">Perfil</a>
+            <a href="#" id="logout-btn" class="btn btn-outline" style="padding: 0.4rem 1rem;">Sair</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h1>Medicamentos</h1>
+                <p style="color: var(--text-muted);">Gerencie o catálogo de produtos da sua farmácia.</p>
+            </div>
+            <a href="/new-medication.html" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Novo Medicamento
+            </a>
+        </div>
+
+        <div class="search-bar">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-medication" placeholder="Buscar por nome, princípio ativo ou código de barras...">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome / Princípio</th>
+                        <th>Dosagem</th>
+                        <th>Fabricante</th>
+                        <th>Tarja</th>
+                        <th>Preço</th>
+                        <th>Estoque Mín.</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="medications-table-body">
+                    <!-- Preenchido via JS -->
+                </tbody>
+            </table>
+            <div id="no-medications-message" style="display: none; padding: 2rem; text-align: center; color: var(--text-muted);">
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                Nenhum medicamento encontrado.
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">Carregando...</div>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/medications.js"></script>
+</body>
+</html>
